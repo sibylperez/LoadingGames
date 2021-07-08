@@ -9,7 +9,7 @@ async function addVideogame(name, description, creationDate, rating, platforms, 
         imagen
       })
       await addedGame.addGenres(genres);
-      await addedGame.addPlatforms(platforms)    
+      await addedGame.addPlatforms(platforms);   
       return (addedGame)
   };
 
