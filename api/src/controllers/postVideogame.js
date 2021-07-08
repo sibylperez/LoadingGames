@@ -1,7 +1,9 @@
 const { Videogame } = require("../db");
 
-async function addVideogame(name, description, creationDate, rating, platforms, genres, imagen) {
-       let addedGame = await Videogame.create({
+async function addVideogame(req, res) {
+  const { name, description, creationDate, rating, platforms, genres, imagen } = req.body;
+   try{
+      let addedGame = await Videogame.create({
         name,
         description,
         creationDate,
@@ -10,8 +12,10 @@ async function addVideogame(name, description, creationDate, rating, platforms, 
       })
       await addedGame.addGenres(genres);
       await addedGame.addPlatforms(platforms);   
-      return (addedGame)
-  };
-
+      return res.status(200).json(addedGame)
+    }catch (err) {
+      next(err);
+  }
+}
 
 module.exports = addVideogame

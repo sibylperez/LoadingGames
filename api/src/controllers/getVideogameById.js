@@ -10,14 +10,10 @@ async function getVideogameById(req, res, next) {
   const uuidValidator = id.includes('-');
   if (uuidValidator) {
       try {
-          const gameDB = await Videogame.findByPk(id, { include: [Genre] }, {include: [Platform]})
-          let gameDBData = gameDB.toJSON()
-          gameDBData.genres = gameDBData.genres.map((g) => g.name);
-          gameDBData.platforms = gameDBData.platforms.map((p) => p.name)
-          res.json(gameDBData)
+          const gameDB = await Videogame.findByPk(id, { include: Genre }, {include: Platform})
+          res.send(gameDB)
       } catch (error) {
-          console.error('Videojuego no existe')
-          res.sendStatus(404)
+          res.send('Videojuego no existe')
       }
   } else { 
     try {
