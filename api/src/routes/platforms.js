@@ -1,17 +1,17 @@
 const { Router } = require('express');
-const { getAllGenres } = require('../controllers/genres');
+const getAllPlatforms = require('../controllers/platforms');
 
 const router = Router();
 
 router.get('/', async (req, res) => {
-    const result =  getAllGenres();
+  const result = await getAllPlatforms();
     try {
-        return res.json( result );
+        return res.send(result)
     } catch (err) {
         return res.status(404).json({
-            error: "no se ha encontrado género de videojuego"
+            error: "no se ha encontrado el plataforma"
         })
-    }
+    }  
 });
 
 module.exports = router;
