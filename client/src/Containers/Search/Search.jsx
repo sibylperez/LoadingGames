@@ -1,35 +1,27 @@
-import React, { useState, useEffect }from 'react';
-import { useDispatch } from 'react-redux'
-import { searchByName } from '../../Actions/index'
+import React, {useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { displayGames, resetAll, searchByName } from '../../Actions';
 
 
-export default function Search (){
-    const [name, setName] = useState('')
+export default function NavBar() {
+  const [name, setName] = useState('');
+  const videogames = useSelector(state => state.searchByName)
 
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(searchByName())
-    },  [dispatch])
-    
-    function handleChange(e) {
-        setName(e.target.value)
-    }
+  function handleSubmit(e) {
+  e.preventDefault();
+  dispatch(searchByName(name))
+  dispatch(resetAll())
+  dispatch(displayGames(videogames))
+}
 
-    function handleSubmit(e) {
-        e.preventDefault();
-        searchByName(name)
-        setName('');
-    }
-
-    console.log(searchByName)
 return (
-<div>
-    <form onSubmit={handleSubmit}>
-        <input value={name} onChange={handleChange}
-        placeholder='Load videogame...' type='text'></input>
-        <button type='submit'>PLAY!</button>        
-    </form>
-</div>
+<React.Fragment>
+      <form onSubmit={handleSubmit}>
+        <input value={name} onChange={(e)=> setName(e.target.value)}
+        placeholder='Load videogame...' type='search'></input>
+        <button type='submit' onSubmit={handleSubmit}>PLAY!</button>
+      </form>
+</React.Fragment>
 )}
-

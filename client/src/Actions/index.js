@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 export const GET_VIDEOGAMES = 'GET_VIDEOGAMES';
 export const SEARCH_BY_NAME = 'SEARCH_BY_NAME';
 export const SEARCH_BY_ID = 'SEARCH_BY_ID';
@@ -8,7 +7,12 @@ export const GET_GENRES = 'GET_GENRES';
 export const GET_PLATFORMS = 'GET_PLATFORMS';
 export const ADD_NEW_VIDEOGAME = 'ADD_NEW_VIDEOGAME';
 export const RESET_ALL = 'RESET_ALL';
-
+export const DISPLAY_GAMES = 'DISPLAY_GAME'
+export const ORDER_AZ = 'ORDER_AZ';
+export const ORDER_ZA = 'ORDER_ZA'
+export const ORDER_ASC = 'ORDER_ASC';
+export const ORDER_DESC = 'ORDER_DESC';
+export const FILTER_ORIGIN = 'FILTER_ORIGIN';
 
 
 export function getVideogames() {
@@ -24,8 +28,8 @@ export function getVideogames() {
 }
 
 export function searchByName(name) {
-  return function (dispatch) {
-    axios.get(`http://localhost:3001/videogame?name=${name}`)
+  return (dispatch) => {
+    return axios.get(`http://localhost:3001/videogame?name=${name}`)
       .then(res => {
         dispatch({
           type: SEARCH_BY_NAME,
@@ -85,9 +89,62 @@ export function addNewVideogame(game) {
 export function resetAll() {
   return (dispatch) => {
     dispatch({
-      type: RESET_ALL
+      type: RESET_ALL,
     });
   };
 };
 
+export function displayGames(payload) {
+  return (dispatch) => {
+    dispatch({
+      type: DISPLAY_GAMES,
+      payload: payload
+    });
+  };
+};
+
+
 // FILTROS
+
+export function orderAZ() {
+  return (dispatch) => {
+    dispatch({
+      type: ORDER_AZ
+    });
+  };
+};
+
+export function orderZA() {
+  return (dispatch) => {
+    dispatch({
+      type: ORDER_ZA
+    });
+  };
+};
+
+export function orderAsc() {
+  return (dispatch) => {
+    dispatch({
+      type: ORDER_ASC
+    });
+  };
+};
+
+export function orderDesc() {
+  return (dispatch) => {
+    dispatch({
+      type: ORDER_DESC
+    });
+  };
+};
+
+export const filterOrigin = (source) => (dispatch, getState) => {
+  /* const videogames = getState().videogames.filter(function (G) {
+      return G.source === source
+  });
+  dispatch({
+      type: FILTER_ORIGIN, 
+      payload: {videogames, source}
+  }); */
+};
+

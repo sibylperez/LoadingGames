@@ -1,22 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import Card from '../Card/Card';
-import { useDispatch, useSelector } from 'react-redux'
-import { getVideogames } from '../../Actions/index'
+import style from './Videogames.module.css'
 
 
 export default function Videogames () {
-    const videogames = useSelector(state => state.videogames)
-    //console.log(videogames)
-    const dispatch = useDispatch()
+    const displaygames = useSelector(state => state.displayGames)
     
-    useEffect(() => {
-        dispatch(getVideogames())
-    },  [dispatch])
 
     //console.log(videogames)
 return (
-<div>
-    {(videogames && videogames.map((e) =>{
+    
+<div className= {style.gamesgrid} >
+    {displaygames.length === 0 ? <div>Cargando...</div> :
+    (displaygames && displaygames.map((e) =>{
         return <Card 
     key = {e.id}
     id = {e.id}
@@ -25,7 +22,6 @@ return (
     platforms = {e.platforms}
     img = {e.img} 
     rating= {e.rating} />})
-    )}
-    
+    )} 
 </div>
 )};
