@@ -14,6 +14,7 @@ export default function NavBar() {
   dispatch(searchByName(name))
   dispatch(resetAll())
   dispatch(displayGames(videogames))
+  setName('')
 }
 
 return (

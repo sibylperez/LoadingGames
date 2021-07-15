@@ -15,7 +15,6 @@ export default function App() {
           <Route exact path= '/home' component= {Home}/>
           <Route exact path= '/create' component= {Create}/>
           <Route exact path='/videogame/:id' render={({ match }) => < Details id={match.params.id} />}/>
-          <Route exact path='/videogames/:name' render={({ match }) => < NavBar props={match.params} />} />
    </React.Fragment>
   );
 }

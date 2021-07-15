@@ -11,7 +11,7 @@ export default function Home() {
     
     useEffect(() => {
         dispatch(getVideogames())
-    }, [])
+    }, [dispatch])
 
     if (videogames.length !== 0){
       dispatch(displayGames(videogames))

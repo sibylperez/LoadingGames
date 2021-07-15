@@ -1,27 +1,49 @@
 import React  from "react";
-import { useDispatch } from "react-redux";
-import { getVideogames ,orderAZ, orderZA,  orderAsc, orderDesc } from '../../Actions/index';
+import { useDispatch, useSelector } from "react-redux";
+import { resetAll, orderAZ, orderZA,  orderAsc, orderDesc, displayGames } from '../../Actions/index';
 import style from './Filters.module.css'
 
 export default function Filter() {
-const dispatch = useDispatch()
+  const order = useSelector(state => state.filteredVideogames)
+  
+  const dispatch = useDispatch()
+ 
+  function handleOrderAZ() {
+    dispatch(orderAZ(order))
+    dispatch(resetAll())
+  }
+
+  function handleOrderZA() {
+    dispatch(orderZA(order))
+    dispatch(resetAll())
+  }
+
+  function handleOrderAsc() {
+    dispatch(orderAsc(order))
+    dispatch(resetAll())
+  }
+
+  function handleOrderDesc() {
+    dispatch(orderDesc(order))
+    dispatch(resetAll())
+  }
 
 // Ordenado
 const handleOrder = (e) => {
   if (e.target.value === "AZ") {
-    dispatch(orderAZ(e.target.value));
+    return handleOrderAZ();
   } else if (e.target.value === "ZA") {
-    dispatch(orderZA(e.target.value));
-  } else if (e.target.value === "asc"){
-    dispatch(orderAsc(e.target.value)) ; 
-  } else if (e.target.value === "desc"){
-    dispatch(orderDesc(e.target.value))  
-  }else {
-    dispatch(getVideogames());
+    return handleOrderZA();
+  } else if (e.target.value === "asc") {
+    return handleOrderAsc();
+  } else if (e.target.value === "desc") {
+    return handleOrderDesc();
+  } else {
+    return displayGames();
   }
-};
+}
 
-console.log(orderAZ())
+
 return (
 
 <React.Fragment>

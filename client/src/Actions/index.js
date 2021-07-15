@@ -106,10 +106,11 @@ export function displayGames(payload) {
 
 // FILTROS
 
-export function orderAZ() {
+export function orderAZ(payload) {
   return (dispatch) => {
     dispatch({
-      type: ORDER_AZ
+      type: ORDER_AZ,
+      payload: payload
     });
   };
 };

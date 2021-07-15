@@ -78,8 +78,8 @@ export default function rootReducer(state = initialState, action) {
         return {
             ...state,
             filteredVideogames: ordAsc.sort((a, b) => {
-                if (a.rating > b.rating) return 1;
-                if (a.rating < b.rating) return -1;
+                if (a.rating < b.rating) return 1;
+                if (a.rating > b.rating) return -1;
                 return 0;
             })
         }
@@ -88,8 +88,8 @@ export default function rootReducer(state = initialState, action) {
         return {
             ...state,
             filteredVideogames: ordDesc.sort((a, b) => {
-                if (a.rating < b.rating) return 1;
-                if (a.rating > b.rating) return -1;
+                if (a.rating > b.rating) return 1;
+                if (a.rating < b.rating) return -1;                
                 return 0;
             })
         }

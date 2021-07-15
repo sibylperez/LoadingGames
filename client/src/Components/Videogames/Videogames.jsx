@@ -6,22 +6,29 @@ import style from './Videogames.module.css'
 
 export default function Videogames () {
     const displaygames = useSelector(state => state.displayGames)
+    const filtergames = useSelector (state => state.filteredVideogames)
     
-
-    //console.log(videogames)
 return (
     
-<div className= {style.gamesgrid} >
-    {displaygames.length === 0 ? <div>Cargando...</div> :
-    (displaygames && displaygames.map((e) =>{
-        return <Card 
-    key = {e.id}
-    id = {e.id}
-    name = {e.name}
-    genres = {e.genres}
-    platforms = {e.platforms}
-    img = {e.img} 
-    rating= {e.rating} />})
-    )} 
+    <div className= {style.gamesgrid} >
+    {displaygames.length > 0 ? displaygames.map(e =>
+         <Card 
+            key = {e.id}
+            id = {e.id}
+            name = {e.name}
+            genres = {e.genres}
+            platforms = {e.platforms}
+            img = {e.img} 
+            rating= {e.rating} />):
+    filtergames.length > 0 ? filtergames.map(e =>
+         <Card 
+            key = {e.id}
+            id = {e.id}
+            name = {e.name}
+            genres = {e.genres}
+            platforms = {e.platforms}
+            img = {e.img} 
+            rating= {e.rating} />): <div>Cargando...</div>
+    } 
 </div>
 )};
