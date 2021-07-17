@@ -1,0 +1,75 @@
+.cardD {
+    position: relative;
+    min-width: 380px;
+    height: 590px;
+    box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
+    inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+    5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    margin: 30px;
+    transition: 0.5s;
+}
+
+.nameD {
+    font-family: 'Old Standard TT', serif;
+	color: #ae2012;
+	font-size: 34px;
+    z-index: 1;
+    transition: 0.5s;
+    margin-bottom: 25px;
+    padding: 5px;
+    text-align: center;
+}
+
+.ctnD {
+    margin: 8px;
+}
+
+.ratingD {
+    font-size: 1rem;
+    color: rgb(250, 246, 44);
+    z-index: 1;
+    transition: 0.5s;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+
+.paraD  {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    z-index: 1;
+    text-align: center;
+}
+
+.imgD {
+	position: relative;
+    border-radius: 15px;
+	overflow: hidden;
+	height: 100%;
+	float: right;
+	width: 50%;
+}
+
+.strong{
+    color: #ae2012;
+}
+
+.descriptionD {
+    height: 280px;
+	width: 630px;
+    overflow-y: scroll;
+}
+
+.btnD{
+    height: 30px;
+    width: 630px;
+   border-color: #232324b2;
+   color: #fff;
+   box-shadow: 0 0 40px 40px #232324b2 inset, 0 0 0 0 #232324b2;
+   transition: all 150ms ease-in-out;
+  } 
+  
+.btnD:hover {
+    box-shadow: 0 0 10px 0 #232324b2 inset, 0 0 10px 4px #232324b2;
+  }

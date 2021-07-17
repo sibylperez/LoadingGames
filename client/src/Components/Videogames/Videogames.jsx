@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Card from '../Card/Card';
+import Loading from '../../Containers/Loading/Loading'
 import style from './Videogames.module.css'
 
 
@@ -28,7 +29,7 @@ return (
             genres = {e.genres}
             platforms = {e.platforms}
             img = {e.img} 
-            rating= {e.rating} />): <div>Cargando...</div>
+            rating= {e.rating} />): <div><Loading/></div>
     } 
 </div>
 )};

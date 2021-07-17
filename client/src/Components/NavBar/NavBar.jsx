@@ -15,9 +15,9 @@ return (
     <div>
       <Filters />
     </div>
-    </nav>
     <div>
       <Search />
     </div>
+    </nav>
 </React.Fragment>
 )}

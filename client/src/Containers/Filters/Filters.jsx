@@ -1,34 +1,50 @@
-import React  from "react";
+import React, {useEffect}  from "react";
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { resetAll, orderAZ, orderZA,  orderAsc, orderDesc, displayGames } from '../../Actions/index';
+import { resetAll, orderAZ, orderZA,  orderAsc, orderDesc, getGenres, filterByGenre, filterOrigin } from '../../Actions/index';
 import style from './Filters.module.css'
 
 export default function Filter() {
-  const order = useSelector(state => state.filteredVideogames)
-  
   const dispatch = useDispatch()
- 
+  const displaygames = useSelector (state => state.displayGames)
+  const order = useSelector(state => state.filteredVideogames)
+  const apigenres = useSelector(state => state.genres);
+  const genres = [...new Set(apigenres)];
+    
+    useEffect(() => {
+        dispatch(getGenres())
+    }, [dispatch]);
+    
+    
+    //Filtrar x genero
+const handleFilterGenre = (e) => {
+  dispatch(filterByGenre(e.target.value)) 
+  dispatch(resetAll(displaygames))     
+}
+
+    
+    // Ordenado
   function handleOrderAZ() {
     dispatch(orderAZ(order))
-    dispatch(resetAll())
+    dispatch(resetAll(displaygames))
   }
 
   function handleOrderZA() {
     dispatch(orderZA(order))
-    dispatch(resetAll())
+    dispatch(resetAll(displaygames))
   }
 
   function handleOrderAsc() {
     dispatch(orderAsc(order))
-    dispatch(resetAll())
+    dispatch(resetAll(displaygames))
   }
 
   function handleOrderDesc() {
     dispatch(orderDesc(order))
-    dispatch(resetAll())
+    dispatch(resetAll(displaygames))
   }
 
-// Ordenado
+ 
 const handleOrder = (e) => {
   if (e.target.value === "AZ") {
     return handleOrderAZ();
@@ -38,9 +54,12 @@ const handleOrder = (e) => {
     return handleOrderAsc();
   } else if (e.target.value === "desc") {
     return handleOrderDesc();
-  } else {
-    return displayGames();
-  }
+  } 
+}
+
+const handleOrigin = () => {
+  dispatch (filterOrigin(order))
+  if(displaygames.length < 1) return alert('You have not created any games yet')
 }
 
 
@@ -48,21 +67,20 @@ return (
 
 <React.Fragment>
  <div className={style.gamesgrid}>
-   <div>New Games</div>
-  <select>
-    <option value="All" default>All</option>
-    <option value="new">New Games</option>
-    <option value="create">Order to Z-A</option>
-  </select>
+ 
+  <button type='submit' onSubmit={handleOrigin}>Games Added</button>
+ 
+  <Link to = '/create'>
+    <button>Add New</button>
+  </Link>
 
-  <div>Genres</div>
-  <select>
-    <option value="All" default>All</option>
-  </select> 
+  <select onChange={(e) => handleFilterGenre(e)}>    
+    <option default> ♦♠ Genres ♣♥</option>{genres.map((G) => (
+    <option key={G.id} value={G.name}>{G.name}</option>))} 
+    </select>
 
-  <div>Order</div>
   <select onChange={(e) => handleOrder(e)}>
-    <option value="All" default>All</option>
+    <option default> ↑Order↓ </option>
     <option value="AZ">Order to A-Z</option>
     <option value="ZA">Order to Z-A</option>
     <option value="asc">Top Rating</option>

@@ -1,4 +1,4 @@
-import { GET_VIDEOGAMES, SEARCH_BY_NAME, SEARCH_BY_ID, GET_GENRES, GET_PLATFORMS, ADD_NEW_VIDEOGAME, RESET_ALL, FILTER_ORIGIN, ORDER_AZ, ORDER_ZA, ORDER_ASC, ORDER_DESC, DISPLAY_GAMES
+import { GET_VIDEOGAMES, SEARCH_BY_NAME, SEARCH_BY_ID, GET_GENRES, GET_PLATFORMS, ADD_NEW_VIDEOGAME, RESET_ALL, ORDER_AZ, ORDER_ZA, ORDER_ASC, ORDER_DESC, DISPLAY_GAMES, FILTER_ORIGIN, FILTER_BY_GENRE
 } from '../Actions/index';
 
 const initialState = {
@@ -9,6 +9,7 @@ const initialState = {
     platforms: [],
     filteredVideogames: [],
     displayGames: [],
+    filterBy: "All",
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -96,8 +97,13 @@ export default function rootReducer(state = initialState, action) {
         case FILTER_ORIGIN:
             return {
                 ...state,
-                /* filteredVideogames: action.payload.videogames,
-                filterBy: action.payload.source, */
+                filteredVideogames: action.payload.videogameOrigin
+            };
+        case FILTER_BY_GENRE:
+            return {
+                ...state,
+                filteredVideogames: action.payload.videogameGenre,
+                filterBy: action.payload.genre,
             };
         default:
             return state;

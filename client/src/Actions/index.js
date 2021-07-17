@@ -13,6 +13,7 @@ export const ORDER_ZA = 'ORDER_ZA'
 export const ORDER_ASC = 'ORDER_ASC';
 export const ORDER_DESC = 'ORDER_DESC';
 export const FILTER_ORIGIN = 'FILTER_ORIGIN';
+export const FILTER_BY_GENRE = 'FILTER_BY_GENRE';
 
 
 export function getVideogames() {
@@ -106,11 +107,10 @@ export function displayGames(payload) {
 
 // FILTROS
 
-export function orderAZ(payload) {
+export function orderAZ() {
   return (dispatch) => {
     dispatch({
       type: ORDER_AZ,
-      payload: payload
     });
   };
 };
@@ -139,13 +139,28 @@ export function orderDesc() {
   };
 };
 
-export const filterOrigin = (source) => (dispatch, getState) => {
-  /* const videogames = getState().videogames.filter(function (G) {
-      return G.source === source
-  });
+export const filterOrigin = () => (dispatch, getState) => {
+  let filterOrigin = [];
+  filterOrigin = getState().videogames.filter(game => game.id.length > 8)       
   dispatch({
-      type: FILTER_ORIGIN, 
-      payload: {videogames, source}
-  }); */
+      type: FILTER_ORIGIN,
+      payload: {
+          videogameOrigin: filterOrigin,
+      },
+  });
 };
+
+export const filterByGenre = (genres) => (dispatch, getState) => {
+  let filterGenre = [];
+  filterGenre = getState().videogames.filter((game) => (game.genres).includes(genres))       
+  dispatch({
+      type: FILTER_BY_GENRE,
+      payload: {
+          genres,
+          videogameGenre: filterGenre,
+      },
+  });
+};
+
+
 
