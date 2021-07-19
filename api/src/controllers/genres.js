@@ -10,31 +10,21 @@ const { GENRES_URL } = require("../utils/constants")
 
 async function getAllGenres(_req, res) {
   try {
-    let arrGenre = [];
     let apiUrl = GENRES_URL;
     const apigenresinfo = await axios.get(apiUrl);
     const apigenresresult = apigenresinfo.data.results;
-    const genresDB = await Genres.findAll();
-    let result = genresDB.concat(apigenresresult);
-    for (let i = 0; i <= 5; i++) {
-    result.forEach(p => {
-      arrGenre.push(p.name)
-     })
-    apiUrl = apigenresinfo.data.next
-  }
-    for (let i = 0; i < arrGenre.length; i++) {
+    apigenresresult && apigenresresult.map(async (g) => {
       await Genres.findOrCreate({
-        where: {
-          name: arrGenre[i]
-        }
-      })
-    }
-    return res.json(arrGenre)
+          where: { name: g.name }
+      });
+  });
+    const genresDB = await Genres.findAll();
+    return res.json(genresDB)
   } catch (err) {
     res.status(404).json({
       error: "Género no encontrado"
     })
-  }
+  } 
 };
 
 
