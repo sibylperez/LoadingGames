@@ -20,6 +20,7 @@ export default function NavBar() {
   function handleReset(e){
     e.preventDefault();
     dispatch(getVideogames(videogames))
+    dispatch(resetAll())
   }
 
 return (

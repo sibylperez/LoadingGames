@@ -52,7 +52,7 @@ export default function rootReducer(state = initialState, action) {
         case DISPLAY_GAMES:
             return {
                 ...state,
-                displayGames: action.payload
+                displayGames: action.payload,
             }
         case ORDER_AZ: 
             const ordAZ = state.filteredVideogames.length > 0 ? state.filteredVideogames : state.videogames
@@ -97,8 +97,7 @@ export default function rootReducer(state = initialState, action) {
         case FILTER_ORIGIN:
             return {
                 ...state,
-                filteredVideogames: action.payload.videogameOrigin
-            };
+            }
         case FILTER_BY_GENRE:
             return {
                 ...state,
