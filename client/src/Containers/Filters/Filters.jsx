@@ -1,15 +1,15 @@
 import React, {useEffect}  from "react";
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { resetAll, orderAZ, orderZA,  orderAsc, orderDesc, getGenres, filterByGenre, filterOrigin } from '../../Actions/index';
+import { resetAll, orderAZ, orderZA,  orderAsc, orderDesc, getGenres, filterByGenre, filterOrigin, displayGames } from '../../Actions/index';
 import style from './Filters.module.css'
 
 export default function Filter() {
   const dispatch = useDispatch()
   const displaygames = useSelector (state => state.displayGames)
   const order = useSelector(state => state.filteredVideogames)
-  const apigenres = useSelector(state => state.genres);
-  const genres = [...new Set(apigenres)];
+  const videogames = useSelector(state => state.videogames)
+  const genres = useSelector(state => state.genres);
     
     useEffect(() => {
         dispatch(getGenres())
@@ -57,25 +57,32 @@ const handleOrder = (e) => {
   } 
 }
 
-const handleOrigin = () => {
-  dispatch (filterOrigin(order))
-  if(displaygames.length < 1) return alert('You have not created any games yet')
+const handleOrigin = (e) => {
+  if(e.target.value === "Created") {
+    dispatch(filterOrigin(e.target.value))
+    dispatch(displayGames(order))
+} else if (e.target.value === "All"){
+  dispatch(displayGames(videogames))
+  }
 }
-
 
 return (
 
 <React.Fragment>
  <div className={style.gamesgrid}>
  
-  <button type='submit' onSubmit={handleOrigin}>Games Added</button>
- 
   <Link to = '/create'>
     <button>Add New</button>
   </Link>
 
+  <select onChange={(e) => handleOrigin(e)}>
+    <option default> Origins </option>
+    <option value="Created">My Games</option>
+    <option value="All">All Games</option>
+  </select>
+
   <select onChange={(e) => handleFilterGenre(e)}>    
-    <option default> ♦♠ Genres ♣♥</option>{genres.map((G) => (
+    <option selected> ♦♠ Genres ♣♥</option>{genres.map((G) => (
     <option key={G.id} value={G.name}>{G.name}</option>))} 
     </select>
 

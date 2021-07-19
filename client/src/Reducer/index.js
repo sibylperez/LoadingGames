@@ -94,10 +94,11 @@ export default function rootReducer(state = initialState, action) {
                 return 0;
             })
         }
-        case FILTER_ORIGIN:
-            return {
-                ...state,
-            }
+        case FILTER_ORIGIN: return {
+            ...state,
+            filteredVideogames: action.payload.videogames,
+            filterBy: action.payload.source,
+        }
         case FILTER_BY_GENRE:
             return {
                 ...state,

@@ -12,8 +12,8 @@ export default function Videogames () {
 
     //Paginado
     const [count, setCount] = useState(1)
-    let num1 = 20 * (count - 1);
-    let num2 = 20 * count
+    let num1 = 15 * (count - 1);
+    let num2 = 15 * count
     
 return (
 <div>
@@ -41,8 +41,8 @@ return (
 </div>
 {displaygames.length > 0 ? 
     <div>
-        <button onClick={() => setCount(count - 1)} > +  </button>
-        <button onClick={() => setCount(count + 1)} > -  </button>
+        <button onClick={() => setCount(count - 1)} > -  </button>
+        <button onClick={() => setCount(count + 1)} > +  </button>
     </div> : null}
 </div>
 

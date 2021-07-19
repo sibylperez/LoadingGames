@@ -83,9 +83,6 @@ const handleChange = (e) => {
 };
 
 const platforms = [... new Set(apiplatforms)]
-const genres = [... new Set(apigenres)];
-
-console.log(genres)
 
 return (
   <div className = {style.card}>
@@ -108,7 +105,7 @@ return (
             <input type="number" name="rating" value={form.rating}></input>
           </div>
           <div>
-          <h4>Genres</h4>{genres.map((e) => (
+          <h4>Genres</h4>{apigenres.map((e) => (
               <div key={e.name}><input type='checkbox' name='genres' value={e.id}/>
                 <label name={e.name}>{e.name}</label>
               </div>))}
@@ -117,7 +114,7 @@ return (
           <div>
           <h4>Platforms</h4>
             {platforms.map((e) => (
-              <div key={e.name}><input type='checkbox' name='platforms' value={e.name}/>
+              <div key={e.name}><input type='checkbox' name='platforms' value={e.id}/>
                  <label name={e.name}>{e.name}</label>
               </div>))}
           </div>

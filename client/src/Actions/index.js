@@ -139,12 +139,12 @@ export function orderDesc() {
   };
 };
 
-export function filterOrigin() {
-  return (dispatch) => {
-    dispatch({
-      type: FILTER_ORIGIN
-    });
-  };
+export const filterOrigin = (source) => (dispatch, getState) => {
+  const videogames = getState().videogames.filter(game => game.id.length > 8);
+  dispatch({
+      type: FILTER_ORIGIN, 
+      payload: {videogames, source}
+  });
 };
 
 export const filterByGenre = (genres) => (dispatch, getState) => {
