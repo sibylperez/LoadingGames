@@ -1,15 +1,17 @@
-import { GET_VIDEOGAMES, SEARCH_BY_NAME, SEARCH_BY_ID, GET_GENRES, GET_PLATFORMS, ADD_NEW_VIDEOGAME, RESET_ALL, ORDER_AZ, ORDER_ZA, ORDER_ASC, ORDER_DESC, DISPLAY_GAMES, FILTER_ORIGIN, FILTER_BY_GENRE
+import { GET_VIDEOGAMES, SEARCH_BY_NAME, SEARCH_BY_ID, GET_GENRES, GET_PLATFORMS, ADD_NEW_VIDEOGAME, RESET_ALL, ORDER_ASC, ORDER_DESC, ORDER_NAME, ORDER_RATING, FILTER_ORIGIN, FILTER_BY_GENRE
 } from '../Actions/index';
 
 const initialState = {
     videogames: [],
+    searchAll: [],
     searchByName: [],
     searchById: [],
     genres: [],
     platforms: [],
+    newGame: null,
     filteredVideogames: [],
-    displayGames: [],
-    filterBy: "All",
+    filterBy: 'All',
+    orderBySelect:'Select'
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -42,62 +44,30 @@ export default function rootReducer(state = initialState, action) {
         case ADD_NEW_VIDEOGAME:
             return {
                 ...state,
-                videogames: action.payload
+                newGame: action.payload
             }
         case RESET_ALL:
             return {
                 ...state,
-                displayGames: []
-            }
-        case DISPLAY_GAMES:
-            return {
-                ...state,
-                displayGames: action.payload,
-            }
-        case ORDER_AZ: 
-            const ordAZ = state.filteredVideogames.length > 0 ? state.filteredVideogames : state.videogames
+                videogames: [],
+                filteredVideogames: [],
+                orderBy: "Select",
+                filterBy: "All",
+            }        
+        case ORDER_ASC: 
+        case ORDER_DESC:
+        case ORDER_NAME:
+        case ORDER_RATING:        
             return {
                 ...state, 
-                filteredVideogames: ordAZ.sort((a, b) => {
-                    if (a.name > b.name) return 1;
-                    if (a.name < b.name) return -1;
-                    return 0;
-                }) 
-            }
-        case ORDER_ZA: 
-            const ordZA = state.filteredVideogames.length > 0 ? state.filteredVideogames : state.videogames
-            return {
-            ...state,
-            filteredVideogames: ordZA.sort((a, b) => {
-                if (a.name < b.name) return 1;
-                if (a.name > b.name) return -1;
-                return 0;
-            })
-        } 
-        case ORDER_ASC: 
-        const ordAsc = state.filteredVideogames.length > 0 ? state.filteredVideogames : state.videogames
-        return {
-            ...state,
-            filteredVideogames: ordAsc.sort((a, b) => {
-                if (a.rating < b.rating) return 1;
-                if (a.rating > b.rating) return -1;
-                return 0;
-            })
-        }
-        case ORDER_DESC: 
-        const ordDesc = state.filteredVideogames.length > 0 ? state.filteredVideogames : state.videogames
-        return {
-            ...state,
-            filteredVideogames: ordDesc.sort((a, b) => {
-                if (a.rating > b.rating) return 1;
-                if (a.rating < b.rating) return -1;                
-                return 0;
-            })
-        }
+                filteredVideogames: action.payload.videogamesOrder,
+                orderBy: action.payload.name,
+         
+        }        
         case FILTER_ORIGIN: return {
             ...state,
             filteredVideogames: action.payload.videogames,
-            filterBy: action.payload.source,
+            filterBy: action.payload.src,
         }
         case FILTER_BY_GENRE:
             return {

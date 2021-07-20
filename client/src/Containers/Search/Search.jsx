@@ -1,35 +1,44 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { displayGames, resetAll, searchByName,getVideogames } from '../../Actions';
+import { searchByName } from '../../Actions/index';
+import Videogames from '../../Components/Videogames/Videogames';
+import Pagination from '../../Components/Pagination/Pagination';
 
 
-export default function NavBar() {
-  const [name, setName] = useState('');
-  const videogamesName = useSelector(state => state.searchByName)
-  const videogames = useSelector(state => state.videogames)
-
-  const dispatch = useDispatch()
-
-  function handleSubmit(e) {
+export default function Search() {
+  const dispatch = useDispatch();
+  let { name } = useParams()
+  
+  const searchVideogame = useSelector((state) => state.searchByName);
+  
+  useEffect(() => {
+  dispatch(searchByName(name));
+  }, [dispatch, name]);
+    
+    // Paginacion
+  function paginate(e, num) {
   e.preventDefault();
-  dispatch(searchByName(name))
-  dispatch(resetAll())
-  dispatch(displayGames(videogamesName))
-  setName('')
-}
-  function handleReset(e){
-    e.preventDefault();
-    dispatch(getVideogames(videogames))
-    dispatch(resetAll())
+  setPage(num);
   }
-
+  
+  const [page, setPage] = useState(1);
+  const [videogamesPerPage] = useState(15);
+  
+  let lastCardPerPage = page * videogamesPerPage;
+  let firtsCardPerPage = lastCardPerPage - videogamesPerPage;
+  let currentPageGames = searchVideogame.slice(firtsCardPerPage, lastCardPerPage);
+  
 return (
-<React.Fragment>
-  <form onSubmit={handleSubmit}>
-    <input value={name} onChange={(e)=> setName(e.target.value)}
-    placeholder='Load videogame...' type='search'></input>
-      <button type='submit' onSubmit={handleSubmit}>PLAY!</button>
-      <button type='submit' onSubmit={handleReset}>Reset</button>
-  </form>
-</React.Fragment>
-)}
+  <div>
+    {searchVideogame.length > 0 ?
+      <React.Fragment>
+        <h1>Load Games : {name}!</h1>
+          <Videogames videogames={currentPageGames} />
+            <Pagination
+              videogamesPerPage={videogamesPerPage}
+              totalVideogames={searchVideogame.length}
+              paginate={paginate}/>
+      </React.Fragment>: <h1>Videogame Not Found</h1>}
+  </div>
+)};

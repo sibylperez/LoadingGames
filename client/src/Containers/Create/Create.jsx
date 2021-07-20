@@ -1,5 +1,4 @@
 import React, {useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addNewVideogame, getGenres, getPlatforms } from '../../Actions';
 import style from './Create.module.css'
@@ -20,13 +19,13 @@ export default function Create() {
   })
 
   
-    //Llamo a los Generos
+//Llamo a los Generos y Plataformas
   useEffect(() => {
     dispatch(getGenres())
     dispatch(getPlatforms())
   }, [dispatch])
 
-  //Handlers
+//Handlers
 const handleSubmit = (e) => {
   e.preventDefault();
 
@@ -40,7 +39,7 @@ const handleSubmit = (e) => {
     platforms: form.platforms
   }
 
-  //Validar los campos
+//Validar los campos
   if(!game.name) { alert("Name requires")
         return}
   if(!game.description) { alert("Description requires")
@@ -50,7 +49,7 @@ const handleSubmit = (e) => {
   if(game.rating > 50 || game.rating < 0) { alert("The rating should be between 0 and 50.")
         return}
   
-  //Dispatch nuevo juego
+//Dispatch nuevo juego
   dispatch(addNewVideogame(game));
   e.target.reset();
         
@@ -88,7 +87,6 @@ return (
   <div className = {style.card}>
     <div className= {style.ctnF}>   
         <h1>Create NEW Game</h1>
-        <Link to='/home'>Home</Link>
         <form 
           onChange={(e) => handleChange(e)}
           onSubmit={(e) => handleSubmit(e)} >

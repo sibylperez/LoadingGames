@@ -20,7 +20,7 @@ return (
         <div className = {style.ctnD}>
           <p className= {style.nameD}>{videogame.name}</p>
           <Link className= {style.btnD} to="/home"><button className= {style.btnD} type="submit">Home</button></Link>
-          <p className= {style.ratingD}> {videogame.rating} points</p>
+          <p className= {style.ratingD}> {videogame.rating} ⭐ points</p>
           <p className = {style.paraD}><b>Genres:</b> {videogame.genres}</p>
           <p className = {style.paraD}><b>Platforms:</b> {videogame.platforms}.</p>
           <strong className= {style.strong}>About this game:</strong>

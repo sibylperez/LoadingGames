@@ -1,33 +1,58 @@
-import React, { useEffect } from 'react'
+import { React, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { displayGames, getVideogames } from '../../Actions/index';
-import Videogames from '../../Components/Videogames/Videogames'
-import Loading from '../Loading/Loading'
+import { getVideogames, resetAll } from '../../Actions/index'
+import Videogames from '../../Components/Videogames/Videogames';
+import Pagination from '../../Components/Pagination/Pagination';
 
 
 export default function Home() {
-  const videogames = useSelector(state => state.videogames)
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
-  
+  const filteredVideogames = useSelector((state) => state.filteredVideogames);
+  const filterBy = useSelector((state) => state.filterBy);
+  const orderBy = useSelector((state) => state.orderBy);
+  const videogames = useSelector((state) => state.videogames);
+
   useEffect(() => {
-    dispatch(getVideogames())
-  }, [dispatch])
-  
-  if (videogames.length !== 0){
-    dispatch(displayGames(videogames))
-  } 
+    dispatch(resetAll());
+    dispatch(getVideogames());
+  }, [dispatch]);
 
-  
-  
-return (
-  <React.Fragment>
-    <div>
-      {videogames.length === 0 ?
-      <Loading /> : <Videogames/>}
+// Filtrado y Ordenado 
+  let allgames;
+  filterBy === "All" && orderBy === "Select"
+    ? (allgames = videogames)
+    : (allgames = filteredVideogames);
+
+// Paginacion
+  function paginate(e, num) {
+    e.preventDefault();
+    setPage(num);
+  }
+
+  const [page, setPage] = useState(1);
+  const [videogamesPerPage] = useState(15);
+
+  let lastCardPerPage = page * videogamesPerPage;
+  let firtsCardPerPage = lastCardPerPage - videogamesPerPage;
+  let currentPageGames = allgames.slice(firtsCardPerPage, lastCardPerPage);
+
+  return (
+    <div >
+      <div>
+        <Videogames videogames={currentPageGames} />
+      </div>
+      <div>
+        <Pagination
+          videogamesPerPage={videogamesPerPage}
+          totalVideogames={allgames.length}
+          paginate={paginate}
+        />
+      </div>  
     </div>
-  </React.Fragment>
-)}
+  );
+};
+  
 
 
 
