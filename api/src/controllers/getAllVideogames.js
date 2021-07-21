@@ -8,7 +8,7 @@ try{
     Promise.all([api, db])
     .then((response) => {
         let[apiResponse, dbResponse] = response;
-        return res.json(
+        return res.status(200).json(
             dbResponse.concat(apiResponse)
         );
     })    

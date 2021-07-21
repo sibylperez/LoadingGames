@@ -19,7 +19,7 @@ async function getAllGenres(_req, res) {
       });
   });
     const genresDB = await Genres.findAll();
-    return res.json(genresDB)
+    return res.status(200).json(genresDB)
   } catch (err) {
     res.status(404).json({
       error: "Género no encontrado"
