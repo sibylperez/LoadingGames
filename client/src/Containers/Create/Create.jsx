@@ -85,40 +85,39 @@ const platforms = [... new Set(apiplatforms)]
 
 return (
   <div className = {style.card}>
-    <div className= {style.ctnF}>   
-        <h1>Create NEW Game</h1>
-        <form 
-          onChange={(e) => handleChange(e)}
-          onSubmit={(e) => handleSubmit(e)} >
-          <div><label>Name</label>
-            <input type="text" name="name" value = {form.name}></input>
-          </div>
-          <div><label>Description</label>
+    <h1 className= {style.title}>Create a NEW Game to Load!</h1>
+      <form className={style.bodyForm}
+        onChange={(e) => handleChange(e)}
+        onSubmit={(e) => handleSubmit(e)} >
+      <div className= {style.divForm}>
+        <label className= {style.label}>Name</label>
+          <input type="text" name="name" value = {form.name}></input>
+      </div>
+      <div className= {style.divForm}>
+        <label className= {style.label}>Description</label>
             <textarea type="text" name="description" value={form.description}></textarea>
-          </div>
-          <div><label>Creation Date</label>
-            <input type="date" name="creationDate" value={form.creationDate}></input>
-          </div>
-          <div> <label>Rating</label>
-            <input type="number" name="rating" value={form.rating}></input>
-          </div>
-          <div>
-          <h4>Genres</h4>{apigenres.map((e) => (
-              <div key={e.name}><input type='checkbox' name='genres' value={e.id}/>
-                <label name={e.name}>{e.name}</label>
-              </div>))}
+      </div>
+      <div className= {style.divForm}>
+        <label className= {style.label}>Creation Date</label>
+           <input type="date" name="creationDate" value={form.creationDate}></input>
+      </div>
+      <div className= {style.divForm}> 
+        <label className= {style.label}>Rating</label>
+          <input type="number" name="rating" value={form.rating}></input>
+      </div>
+      <div>
+        <h4 className= {style.label}>Genres</h4>{apigenres.map((e) => (
+          <div key={e.name} className={style.genres}><input type='checkbox' name='genres' value={e.id}/>
+            <label name={e.name}>{e.name}</label></div>))}
             </div>
-          <div>       
-          <div>
-          <h4>Platforms</h4>
-            {platforms.map((e) => (
-              <div key={e.name}><input type='checkbox' name='platforms' value={e.id}/>
-                 <label name={e.name}>{e.name}</label>
-              </div>))}
-          </div>
-          <button type="submit"> Add videogame </button>
-          </div>
-        </form>
-    </div>
-  </div>
+      <div>       
+        <h4>Platforms</h4>{platforms.map((e) => (
+          <div key={e.name} className={style.platforms}><input type='checkbox' name='platforms' value={e.id}/>
+            <label name={e.name}>{e.name}</label></div>))}
+      </div>
+      <div>
+        <button type="submit"> Add videogame </button>
+      </div>
+  </form>
+</div>
 )}

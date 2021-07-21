@@ -1,8 +1,9 @@
 .card {
   font-family: 'Titillium Web', sans-serif;
+  top: 5vh;
   position: relative;
-  min-width: 380px;
-  height: 590px;
+  display: flex;
+  flex-direction: column;
   box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
   inset -5px -5px 15px rgba(255, 255, 255, 0.1),
   5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
@@ -10,4 +11,36 @@
   margin: 30px;
   transition: 0.5s;
 }
+h1 {
+  text-align: center;
+}
 
+h4{
+  text-align: center;
+  justify-content: center;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.bodyForm{
+    padding:10px;
+}
+
+.divForm{
+  margin:10px;
+  align-items: center;
+  justify-content: center;  
+}
+
+.label{
+  display: inline-block;
+  width: 120px;  
+}
+
+.genres {
+  padding:5px;  
+}
+
+.platforms{
+  display: inline-block;
+  padding:5px; 
+}

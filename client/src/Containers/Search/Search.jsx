@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { searchByName } from '../../Actions/index';
 import Videogames from '../../Components/Videogames/Videogames';
 import Pagination from '../../Components/Pagination/Pagination';
+import style from './Search.module.css'
 
 
 export default function Search() {
@@ -33,12 +34,13 @@ return (
   <div>
     {searchVideogame.length > 0 ?
       <React.Fragment>
-        <h1>Load Games : {name}!</h1>
+        <h1 className= {style.titleSearch}>Games Load with name </h1>
+        <p className= {style.titleName}>{name}!</p>
           <Videogames videogames={currentPageGames} />
             <Pagination
               videogamesPerPage={videogamesPerPage}
               totalVideogames={searchVideogame.length}
               paginate={paginate}/>
-      </React.Fragment>: <h1>Videogame Not Found</h1>}
+      </React.Fragment> : <h1></h1>}
   </div>
 )};

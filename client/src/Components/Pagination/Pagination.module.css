@@ -1,0 +1,19 @@
+.pag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.pag button{
+    background: none;
+    border: none;
+    color: #faf6f5;
+    font-weight: 600;
+    font-size: 25px;
+    letter-spacing: 25px;
+}
+
+.item button:hover {
+    box-shadow: 0 50px 5px 0 rgba(0,0,0,0.24), 0 45px 50px 0 rgba(0,0,0,0.19);
+}

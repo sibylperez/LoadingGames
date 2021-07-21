@@ -45,8 +45,8 @@ return (
 <React.Fragment>
  <div className={style.gamesgrid}>
  
-  <Link to = '/newgame'>
-    <button>Add New</button>
+  <Link className={style.linkF} to = '/newgame'>
+    <button className={style.btnF} >Add New</button>
   </Link>
 
   <select onChange={(e) => handleOrigin(e)}>

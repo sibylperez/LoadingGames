@@ -15,8 +15,8 @@ export default function NavBar() {
 return (
 <React.Fragment>
   <nav className={style.navbar}>
-  <Link to='/home'>
-    <h2>Loading Games...</h2>
+  <Link className= {style.linkhover} to='/home'>
+    <h2 className= {style.titleNav}>Loading Games...</h2>
   </Link>
     <div>
       <Filters />
@@ -38,6 +38,6 @@ return (
           </form>
         </div>
     </div>
-    </nav>
+  </nav>
 </React.Fragment>
 )}

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap');
+
 .navbar {
     height: 56px;
     width: 100%;
@@ -19,4 +21,13 @@
     border-bottom: 4px solid transparent;
 }
 
+.linkhover {
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    color: #f2f8f3;
+}
 
+.titleNav {
+    font-family: 'Cinzel', serif;
+}
