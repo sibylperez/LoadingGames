@@ -83,25 +83,27 @@ body {
   font-weight: 300;
   color: rgba(255, 255, 255, 0.9);
   z-index: 1;
-  transition: 0.5s;
+  transition-duration: 0.5s;
 }
 
 .btn {
-  position: relative;
+  font-family: 'Cinzel', serif;
+  margin-left: 35%;
   display: inline-block;
   padding: 8px 20px;
-  background: black;
+  background: rgb(29, 29, 29);
   border-radius: 5px;
   text-decoration: none;
   color: white;
   margin-top: 20px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition-duration: 0.5s;
 }
 
 .btn:hover {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
   background: #fff;
-  color: #000;
+  color:  rgb(184, 2, 2);
 }
 
 .imagen {

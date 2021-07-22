@@ -36,7 +36,7 @@ export default function Filter() {
     if(e.target.value === "Created") {
       dispatch(filterOrigin(e.target.value))
     } else {
-        dispatch(filterByGenre(e.target.value))
+      dispatch(filterByGenre(e.target.value))
     }
   }
 
@@ -50,23 +50,23 @@ return (
   </Link>
 
   <select onChange={(e) => handleOrigin(e)}>
-    <option default> Origins </option>
+    <option default value="All"> Origins </option>
     <option value="Created">My Games</option>
   </select>
 
-  <select onChange={(e) => handleFilterGenre(e)}>    
-    <option default> ♦♠ Genres ♣♥</option>
-    {genres.map((G) => (
-    <option key={G.id} value={G.name}>{G.name}</option>))} 
-    </select>
-
   <select onChange={(e) => handleOrder(e)}>
-    <option default Value="All"> ↑Order↓ </option>
+    <option default value="All"> ↑Order↓ </option>
     <option value="AZ">Order to A-Z</option>
     <option value="ZA">Order to Z-A</option>
     <option value="desc">Top Rating</option>
     <option value="asc">Low Rating</option>
   </select>
+
+  <select onChange={(e) => handleFilterGenre(e)}>    
+    <option default value="All"> ♦♠ Genres ♣♥</option>
+    {genres.map((G) => (
+    <option key={G.id} value={G.name}>{G.name}</option>))} 
+    </select>
   </div>
 </React.Fragment>
 )}

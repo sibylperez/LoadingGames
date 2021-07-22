@@ -31,3 +31,17 @@
 .titleNav {
     font-family: 'Cinzel', serif;
 }
+
+.btnNav {
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  color: rgb(184, 2, 2);
+  border: 2px solid #fdfdfd;
+  
+  transition-duration: 0.4s;
+}
+
+.btnNav:hover {
+  background-color: #d6d2d2e0;
+  color: white;
+}

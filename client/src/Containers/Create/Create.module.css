@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap');
+.formG {
+  
+  margin-left: 25%;
+}
+
 .card {
-  font-family: 'Titillium Web', sans-serif;
+  font-family: 'Cinzel', serif;
   top: 5vh;
-  position: relative;
+  width: 650px;
+  height: 1000px;
   display: flex;
-  flex-direction: column;
+  flex-direction: column;  
   box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
   inset -5px -5px 15px rgba(255, 255, 255, 0.1),
   5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
@@ -18,7 +25,6 @@ h1 {
 h4{
   text-align: center;
   justify-content: center;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .bodyForm{
@@ -27,20 +33,59 @@ h4{
 
 .divForm{
   margin:10px;
-  align-items: center;
-  justify-content: center;  
+  width: 140px; 
 }
 
-.label{
-  display: inline-block;
-  width: 120px;  
+textarea {
+  width: 400%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
 }
 
 .genres {
+  display: inline-block;
   padding:5px;  
+  justify-content: center;
 }
 
 .platforms{
   display: inline-block;
   padding:5px; 
 }
+
+.btnForm {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  background-color: white;
+  color:  rgb(184, 2, 2);
+  border: 2px solid rgb(255, 255, 255);
+  padding: 12px 28px;
+  transition-duration: 0.4s;
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 10%;
+}
+
+.btnForm:hover {
+  background-color: #ccc8c8;
+  color: rgb(43, 43, 43);;
+}
+
+.btnD{
+  height: 30px;
+  width: 630px;
+ border-color: #232324b2;
+ color: #fff;
+ box-shadow: 0 0 40px 40px #232324b2 inset, 0 0 0 0 #232324b2;
+ transition: all 150ms ease-in-out;
+} 
+
+.btnD:hover {
+  box-shadow: 0 0 10px 0 #232324b2 inset, 0 0 10px 4px #232324b2;
+}
+

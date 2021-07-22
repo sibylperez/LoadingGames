@@ -32,7 +32,7 @@ return (
                 type="text">
               </input>
               <Link to={`/loadgames/${name}`}>
-                <button type="submit"> PLAY! </button>
+                <button type="submit" className= {style.btnNav}> PLAY! </button>
               </Link>
             </div>
           </form>

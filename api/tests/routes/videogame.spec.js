@@ -14,8 +14,10 @@ describe('Videogame routes', () => {
   }));
   //beforeEach(() => Videogame.sync({ force: true }))
   describe('GET /videogames', () => {
-    it('should get 200', async () =>
-      await agent.get('/videogames').expect(200)
+    it('should get 200', function(){
+      this.timeout(10000)
+      agent.get('/videogames').expect(200)
+    }
     );
   });
   describe('GET /genres', () => {

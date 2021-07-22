@@ -1,5 +1,6 @@
 import React, {useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { addNewVideogame, getGenres, getPlatforms } from '../../Actions';
 import style from './Create.module.css'
 
@@ -84,18 +85,16 @@ const handleChange = (e) => {
 const platforms = [... new Set(apiplatforms)]
 
 return (
+<div className= {style.formG}>  
   <div className = {style.card}>
     <h1 className= {style.title}>Create a NEW Game to Load!</h1>
+    <Link className= {style.btnD} to="/"><button className= {style.btnD} type="submit">Home</button></Link>
       <form className={style.bodyForm}
         onChange={(e) => handleChange(e)}
         onSubmit={(e) => handleSubmit(e)} >
       <div className= {style.divForm}>
         <label className= {style.label}>Name</label>
           <input type="text" name="name" value = {form.name}></input>
-      </div>
-      <div className= {style.divForm}>
-        <label className= {style.label}>Description</label>
-            <textarea type="text" name="description" value={form.description}></textarea>
       </div>
       <div className= {style.divForm}>
         <label className= {style.label}>Creation Date</label>
@@ -106,7 +105,11 @@ return (
           <input type="number" name="rating" value={form.rating}></input>
       </div>
       <div>
-        <h4 className= {style.label}>Genres</h4>{apigenres.map((e) => (
+      <div className= {style.divForm}>
+        <label className= {style.label}>Description</label>
+            <textarea type="text" name="description" value={form.description}></textarea>
+      </div>
+        <h4>Genres</h4>{apigenres.map((e) => (
           <div key={e.name} className={style.genres}><input type='checkbox' name='genres' value={e.id}/>
             <label name={e.name}>{e.name}</label></div>))}
             </div>
@@ -116,8 +119,9 @@ return (
             <label name={e.name}>{e.name}</label></div>))}
       </div>
       <div>
-        <button type="submit"> Add videogame </button>
+        <button type="submit" className={style.btnForm}> Add videogame </button>
       </div>
-  </form>
-</div>
+    </form>
+  </div>
+</div> 
 )}
