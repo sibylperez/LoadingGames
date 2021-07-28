@@ -7,8 +7,10 @@ export default function Card({data}) {
     
 let allgenres = []
 if(Array.isArray(data.genres)){
-    let genreDB = [data.genres].map(c => c.name)
-    allgenres = allgenres.concat(genreDB)
+    let genreDB = data.genres[0].name;
+    let genreDB2 = data.genres[1].name
+    let all = genreDB.concat(genreDB2)
+    allgenres = allgenres.concat(all)
 }
   
 return (
@@ -24,7 +26,6 @@ return (
                     <div className={style.para}>Genres:{
                     allgenres.length === 0 ? data.genres : allgenres
                     }</div>
-                    <div className={style.para}>Platforms: {data.platforms}</div>
                     <Link to={`/loadgame/${data.id}`}> <button className = {style.btn} type='submit'>More info</button></Link>
                 </div>
             </div>

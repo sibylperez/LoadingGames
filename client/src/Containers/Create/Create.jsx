@@ -88,7 +88,7 @@ return (
 <div className= {style.formG}>  
   <div className = {style.card}>
     <h1 className= {style.title}>Create a NEW Game to Load!</h1>
-    <Link className= {style.btnD} to="/"><button className= {style.btnD} type="submit">Home</button></Link>
+    <Link className= {style.btnD} to="/home"><button className= {style.btnD} type="submit">Home</button></Link>
       <form className={style.bodyForm}
         onChange={(e) => handleChange(e)}
         onSubmit={(e) => handleSubmit(e)} >

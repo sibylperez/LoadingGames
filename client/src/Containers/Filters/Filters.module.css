@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap');
+
 .gamesgrid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -26,3 +28,18 @@
   color: rgb(43, 43, 43);
 }
 
+.gamesgrid select {
+  font-family: 'Cinzel', serif;
+  width: 145px;
+  border: 2px solid rgb(184, 2, 2);
+  border-radius: 10px;
+  margin: 7px;
+}
+
+.gamesgrid select:hover {
+  background-color: rgb(202, 202, 202);
+}
+
+.gamesgrid option {
+  background: none;
+}

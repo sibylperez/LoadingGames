@@ -1,5 +1,5 @@
 .landingpage {
-  background-image: url('https://images.squarespace-cdn.com/content/v1/51be3e56e4b09edc5f81e74c/1551795556726-AYCIRFK3Z8SAZQ11RRF5/SciFi_LoaderBlue.gif');
+  background-image: url('https://www.akibagamers.it/wp-content/uploads/2020/09/high-score-recensione-serie-01-1620x800.jpg');
   height: 100vh;
   background-size: cover;
   background-position: center;
@@ -11,8 +11,8 @@
 }
 
 .container {
-  padding-block-end: 30px;
-  line-height: 70px;
+  padding-block-end: 0px;
+  line-height: 250px;
   margin-right: 450px;
 }
 

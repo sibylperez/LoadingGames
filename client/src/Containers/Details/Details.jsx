@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchById } from '../../Actions/index';
 import style from './Details.module.css';
+import ImgDefault from '../../Resourses/ImgDefault.jpg'
 
 export default function Detail({ id }) {
   const videogame = useSelector(state => state.searchById);
@@ -16,7 +17,7 @@ export default function Detail({ id }) {
   
 return (
   <div className= {style.cardD} >
-      <img className={style.imgD} src={videogame.img} alt={videogame.name} />
+      <img className={style.imgD} src={videogame.img || ImgDefault} alt={videogame.name} />
         <div className = {style.ctnD}>
           <p className= {style.nameD}>{videogame.name}</p>
           <Link className= {style.btnD} to="/home"><button className= {style.btnD} type="submit">Home</button></Link>

@@ -8,7 +8,7 @@ export default function Videogames ({videogames}) {
 return (
     <div className= {style.gamesgrid} >
       {videogames.length > 0 ?
-          videogames.map((vg) => (<Card data={vg} />))
+          videogames.map((vg) => (<Card key={vg.id} data={vg} />))
         : <Loading/>} 
     </div>
 

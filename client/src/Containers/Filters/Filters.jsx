@@ -55,7 +55,7 @@ return (
   </select>
 
   <select onChange={(e) => handleOrder(e)}>
-    <option default value="All"> ↑Order↓ </option>
+    <option default value="All"> Order </option>
     <option value="AZ">Order to A-Z</option>
     <option value="ZA">Order to Z-A</option>
     <option value="desc">Top Rating</option>
@@ -63,7 +63,7 @@ return (
   </select>
 
   <select onChange={(e) => handleFilterGenre(e)}>    
-    <option default value="All"> ♦♠ Genres ♣♥</option>
+    <option default value="All">  Genres </option>
     {genres.map((G) => (
     <option key={G.id} value={G.name}>{G.name}</option>))} 
     </select>
